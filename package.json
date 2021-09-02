@@ -1,0 +1,18 @@
+{
+  "name": "fullstackopen-back",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "format": "prettier --parser babel --write '**/*.js'"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12",
+    "prettier": "^2.3.2"
+  }
+}
