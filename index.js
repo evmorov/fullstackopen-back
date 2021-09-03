@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-app.use(express.json())
+app.use(express.json());
 
 let persons = [
   {
@@ -48,6 +48,18 @@ app.get('/api/persons/:id', (request, response) => {
 
 app.post('/api/persons', (request, response) => {
   const { body } = request;
+
+  if (!body.name) {
+    return response.status(404).json({ error: 'Name is missing' });
+  }
+
+  if (!body.number) {
+    return response.status(404).json({ error: 'Number is missing' });
+  }
+
+  if (persons.find((person) => person.name === body.name)) {
+    return response.status(409).json({ error: 'The name already exists in the phonebook' });
+  }
 
   const person = {
     id: generateId(),
