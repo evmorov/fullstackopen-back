@@ -3,7 +3,25 @@ const morgan = require('morgan');
 
 const app = express();
 app.use(express.json());
-app.use(morgan('tiny'));
+
+app.use(
+  morgan((tokens, req, res) => {
+    const method = tokens.method(req, res);
+    const format = [
+      method,
+      tokens.url(req, res),
+      tokens.status(req, res),
+      tokens.res(req, res, 'content-length'),
+      '-',
+      tokens['response-time'](req, res),
+      'ms',
+    ];
+    if (method === 'POST') {
+      format.push(JSON.stringify(req.body));
+    }
+    return format.join(' ');
+  }),
+);
 
 let persons = [
   {
