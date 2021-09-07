@@ -7,6 +7,7 @@
     "dev": "nodemon index.js",
     "build:ui": "rm -rf build && cd ../fullstackopen/part2/phonebook/ && yarn build --prod && cp -r build ../../../fullstackopen-back",
     "deploy": "git push heroku main",
+    "deploy:full": "yarn build:ui && git add build && git commit -m uibuild && git push && yarn deploy",
     "logs:prod": "heroku logs --tail",
     "format": "prettier --parser babel --write '**/*.js'"
   },
