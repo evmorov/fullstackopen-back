@@ -5,6 +5,9 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "build:ui": "rm -rf build && cd ../fullstackopen/part2/phonebook/ && yarn build --prod && cp -r build ../../../fullstackopen-back",
+    "deploy": "git push heroku main",
+    "logs:prod": "heroku logs --tail",
     "format": "prettier --parser babel --write '**/*.js'"
   },
   "license": "MIT",
