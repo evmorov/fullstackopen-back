@@ -35,5 +35,6 @@ if (name && number) {
       console.log(`${name} ${number}`);
     });
     mongoose.connection.close();
+    process.exit(1);
   });
 }
