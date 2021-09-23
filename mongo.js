@@ -24,7 +24,7 @@ const Person = mongoose.model('Person', personSchema);
 if (name && number) {
   const newPerson = new Person({ name, number });
 
-  newPerson.save().then((result) => {
+  newPerson.save().then(() => {
     console.log('person saved!');
     mongoose.connection.close();
   });
